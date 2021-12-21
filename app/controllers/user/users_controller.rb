@@ -1,21 +1,21 @@
-class User::UserController < ApplicatitonController
+class User::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  
+
   def show
     @user = User.find(params[:id])
     @community = Community.new
-    @community = Community.where(user_id: @user.id)
+    @communities = Community.where(user_id: @user.id)
     @account = Account.new
-    @account = Account.where(user_id: @user.id)
+    @accounts = Account.where(user_id: @user.id)
   end
-  
+
   def index
     @user = current_user
     @users = User.all
     @community = Community.new
     @communities = Community.all
   end
-  
+
   def edit
     @user = User.find(params[:id])
     if @user == current_user
@@ -24,7 +24,7 @@ class User::UserController < ApplicatitonController
       redirect_to user_path(current_user)
     end
   end
-  
+
   def update
     @user = current_user
     if current_user.update(user_params)
@@ -33,7 +33,7 @@ class User::UserController < ApplicatitonController
       render "edit"
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :handle)
