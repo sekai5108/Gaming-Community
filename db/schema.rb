@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_114036) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "account_name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_114036) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
