@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h4 class ="col-3 text-center" style = "background-color:lightreay">マイページ</h4>
+  </div>
+
+  <table class="table table-borderless">
+    <tr class="row">
+      <td class="col-2"><strong>登録情報</strong></td>
+      <td class="col-4"><%= link_to '編集する', edit_user_path(@user),class: "btn btn-success" %></td>
+    </tr>
+  </table>
+
+  <table class="table table-border-dark">
+    <tbody>
+      <tr class="row">
+        <td class="col-4">ニックネーム</td>
+        <td class="col-8"><%= @user.handle %></td>
+      <% @accounts.each do |account_name| %>
+      <tr class="row">
+        <td class="col-4">id</td>
+        <td class="col-8"><%= account_name %></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
