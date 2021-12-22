@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :accounts
   has_many :communities
   
+  attachment :image
+  
 end

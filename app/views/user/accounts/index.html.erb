@@ -24,14 +24,16 @@
           <tr>
             <th>アカウントID</th>
             <th></th>
+            <th></th>
           </tr>
         </div>
       </thead>
       <tbody>
         <% @accounts.each do |account| %>
           <tr>
-            <td><%= account_name %></td>
+            <td><%= account.account_name %></td>
             <td><%= link_to "編集する", edit_account_path(account), class: "btn btn-outline-success" %></td>
+            <td><%= link_to "削除", account_path(account), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       </tbody>

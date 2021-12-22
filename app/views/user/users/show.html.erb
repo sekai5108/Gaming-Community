@@ -13,12 +13,19 @@
   <table class="table table-border-dark">
     <tbody>
       <tr class="row">
-        <td class="col-4">ニックネーム</td>
-        <td class="col-8"><%= @user.handle %></td>
+        <td class="col-4"><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr class="row">
+        <td class="col-2">ニックネーム</td>
+        <td class="col-2"><%= @user.handle %></td>
+      </tr>
+      <tr class="row">
+        <td class="col-2">アカウントID</td>
+        <td class="col-2"><%= link_to "追加", accounts_path, class: "btn btn-success" %></td>
+      </tr>
       <% @accounts.each do |account| %>
       <tr class="row">
-        <td class="col-4">id</td>
-        <td class="col-8"><%= account_name %></td>
+        <td class="col-4"><%= account.account_name %></td>
         <td></td>
       </tr>
       <% end %>
