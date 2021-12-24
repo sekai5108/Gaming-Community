@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :users,only: [:show, :index, :edit, :update]
     resources :accounts, only: [:index, :create, :edit, :update, :destroy]
+    resources :communities
   end
 
-  resources :communities
+
 
 end

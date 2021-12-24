@@ -1,10 +1,11 @@
 class User::CommunitiesController < ApplicationController
   before_action :authenticate_user!, except:[:index]
-  
+
   def index
     @user = current_user
     @communities =Community.all
     @community = Community.new
+    @accounts = Account.where(user_id: @user.id)
   end
 
   def show

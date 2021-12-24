@@ -3,7 +3,6 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @image = 
     @community = Community.new
     @communities = Community.where(user_id: @user.id)
     @account = Account.new
