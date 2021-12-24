@@ -1,32 +1,32 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'users/user', user: @user %>
+      <%= render 'user/users/user', user: @user %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>Books</h2>
+      <h2>募集掲示板</h2>
       <table class="table table-fover table-inverse">
         <thead>
           <tr>
             <td></td>
-            <th>Title</th>
-            <th>Opinion</th>
+            <th>タイトル</th>
+            <th>詳細</th>
             <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
-        <% @books.each do |book| %>
+        <% @communities.each do |community| %>
         <tr>
           <td>
-            <%= link_to user_path(book.user) do %>
+            <%= link_to user_path(community.user) do %>
               <%= attachment_image_tag book.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
             <% end %>
           </td>
           <td>
-            <%= link_to book.title, book_path(book.id) %>
+            <%= link_to community.title, community_path(community.id) %>
           </td>
           <td>
-            <%= book.body %>
+            <%= community.text %>
           </td>
         </tr>
         <% end %>
@@ -35,4 +35,3 @@
     </div>
   </div>
 </div>
-© 2021 GitHub, Inc.
