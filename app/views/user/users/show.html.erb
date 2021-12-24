@@ -1,6 +1,8 @@
 <div class="container">
-  <div class="row">
-    <h4 class ="col-3 text-center" style = "background-color:lightreay">マイページ</h4>
+  <div class="row mt-3">
+    <div class ="col-3">
+      <h4 class="text-center text-light bg-secondary">マイページ</h4>
+    </div>
   </div>
 
   <table class="table table-borderless">
@@ -21,7 +23,7 @@
       </tr>
       <tr class="row">
         <td class="col-2">アカウントID</td>
-        <td class="col-2"><%= link_to "追加", accounts_path, class: "btn btn-success" %></td>
+        <td class="col-2"><%= link_to "追加・編集", accounts_path, class: "btn btn-success" %></td>
       </tr>
       <% @accounts.each do |account| %>
       <tr class="row">
