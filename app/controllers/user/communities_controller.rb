@@ -34,7 +34,7 @@ class User::CommunitiesController < ApplicationController
     if @community.user.== current_user
       redirect_to edit_community_path
     else
-      redirect_to communities_path
+      redirect_to root_path
     end
   end
 
@@ -52,7 +52,7 @@ class User::CommunitiesController < ApplicationController
   def destroy
     @community = Community.find(params[:id])
     if @community.destroy
-      redirect_to communities_path
+      redirect_to root_path
     end
   end
 

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
   }
 
+  root "user/communities#index"
+
   scope module: :user do
     resources :users,only: [:show, :index, :edit, :update]
     resources :accounts, only: [:index, :create, :edit, :update, :destroy]
