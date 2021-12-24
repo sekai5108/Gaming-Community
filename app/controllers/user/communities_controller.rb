@@ -5,7 +5,9 @@ class User::CommunitiesController < ApplicationController
     @user = current_user
     @communities =Community.all
     @community = Community.new
-    @accounts = Account.where(user_id: @user.id)
+    if user_signed_in?
+      @accounts = Account.where(user_id: @user.id)
+    end
   end
 
   def show
