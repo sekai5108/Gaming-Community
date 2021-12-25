@@ -23,11 +23,9 @@
             <td class="col-12 text-center"><%= account.account_name %></td>
           </tr>
           <% end %>
-          <% if user_signed_in? %>
           <tr class="row">
             <td class="col-12 text-center"><%= link_to "追加・編集", accounts_path, class: "btn btn-success" %></td>
           </tr>
-          <% end %>
         </tbody>
       </table>
     </div>

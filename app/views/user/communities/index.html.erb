@@ -21,12 +21,17 @@
       <% end %>
     </div>
     <div class="col-md-8 offset-md-1 mt-3">
-      <h2>募集掲示板</h2>
+      <div class="d-flex justify-content-between">
+        <h2>募集掲示板</h2>
+        <div>
+          <%= link_to "新規投稿", new_community_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
       <table class="table table-fover table-inverse">
         <thead>
           <tr>
-            <th></th>
-            <th>タイトル</th>
+            <th class="col-2"></th>
+            <th class="col-3">タイトル</th>
             <th>詳細</th>
             <th colspan="3"></th>
           </tr>
@@ -36,7 +41,7 @@
         <tr>
           <td>
             <%= link_to user_path(community.user) do %>
-              <%= attachment_image_tag book.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+              <%= attachment_image_tag community.user, :image, fallback: "no_image.jpg", size: "40x40" %>
             <% end %>
           </td>
           <td>

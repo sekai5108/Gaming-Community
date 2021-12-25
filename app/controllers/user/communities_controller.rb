@@ -1,9 +1,14 @@
 class User::CommunitiesController < ApplicationController
   before_action :authenticate_user!, except:[:index]
 
+  def new
+    @community = Community.new
+  end
+
+
   def index
     @user = current_user
-    @communities =Community.all
+    @communities = Community.all
     @community = Community.new
     if user_signed_in?
       @accounts = Account.where(user_id: @user.id)
@@ -11,14 +16,17 @@ class User::CommunitiesController < ApplicationController
   end
 
   def show
-    @community = Book.new
+    @community = Community.new
     @community = Community.find(params[:id])
     @user = @community.user
+    if user_signed_in?
+      @accounts = Account.where(user_id: @user.id)
+    end
   end
 
   def create
     @community = Community.new(community_params)
-    @community.user.id = current_user.id
+    @community.user_id = current_user.id
     if @community.save
       flash[:notice] = "投稿に成功しました"
       redirect_to community_path(@community)
@@ -58,7 +66,7 @@ class User::CommunitiesController < ApplicationController
 
   private
   def community_params
-    params.require(:community).permit(:title, :text)
+    params.permit(:title, :text)
   end
 
 end
