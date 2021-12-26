@@ -1,28 +1,29 @@
 class User::CommunityCommentsController < ApplicationController
   before_action :authenticate_user!
-  
-  def creat
-    community = Community.find(parans[:community_id])
-    comment = current_user.comments.new(comment_params)
-    comment.community_comment_id = community.id
-    comment.save
-    redirect_to community_path
+
+  def create
+    @community = Community.find(params[:community_id])
+    @community_comment = CommunityComment.new(community_comment_params)
+    @community_comment.user_id = current_user.id
+    @community_comment.community_id = @community.id
+    @community_comment.save
+    redirect_to community_path(@community)
   end
-  
+
   def edit
   end
-  
+
   def update
   end
-  
+
   def destroy
-    Comment.find_by(id: params[:id]).destroy
+    @community_comment.find_by(id: params[:id]).destroy
     redirect_to community_path(params[:community_id])
   end
-  
+
   private
-  def comment_params
-    params.require(:comment).permit(:comment)
+  def community_comment_params
+    params.require(:community_comment).permit(:comment)
   end
-  
+
 end

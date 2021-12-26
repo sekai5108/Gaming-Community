@@ -18,6 +18,8 @@ class User::CommunitiesController < ApplicationController
   def show
     @community = Community.new
     @community = Community.find(params[:id])
+    @comment = CommunityComment.new
+    @comments = CommunityComment.all
     @user = @community.user
     if user_signed_in?
       @accounts = Account.where(user_id: @user.id)

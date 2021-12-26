@@ -34,21 +34,20 @@
           </tr>
           <tr>
             <td>
-                <%= form_with model: @community_comment, local: true do |f| %>
-                <%= f.text_area :community_comment, placeholder: "コメント" %>
+                <%= form_with model: [@community, @comment], local: true do |f| %>
+                <%= f.text_area :comment, placeholder: "コメント" %>
                 <div class="text-center mt-2">
                 <%= f.submit "投稿", class: "btn btn-outline-success" %>
                 <% end %>
                 </div>
             </td>
           </tr>
-          <% @community.comments.each do |comment| %>
+          <% @comments.each do |community_comment| %>
           <tr>
-            <td><%= comment.user.handle %></td>
+            <td><%= community_comment.user.handle %>：<%= community_comment.comment %><br>
+            <%= community_comment.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
-          <tr>
-            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
+          <% end %>
       </table>
     </div>
   </div>
