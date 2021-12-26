@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2021_12_18_114036) do
   end
 
   create_table "community_comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "community_id"
+    t.integer "user_id"
+    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

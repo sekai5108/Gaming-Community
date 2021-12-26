@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :users,only: [:show, :index, :edit, :update]
     resources :accounts, only: [:index, :create, :edit, :update, :destroy]
-    resources :communities
+    resources :communities 
+    resources :community_comments, only: [:create, :edit, :update, :destroy], as: :community_comments
+    
   end
 
 
