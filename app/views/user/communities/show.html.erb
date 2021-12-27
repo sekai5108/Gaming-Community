@@ -9,8 +9,8 @@
         <% if user_signed_in? %>
           <% if @community.user_id == current_user.id %>
           <div>
-            <%= link_to "編集", edit_community_path(@community), class: "btn btn-success" %><span> </span>
-            <%= link_to "削除", community_path(@community), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %>
+            <%= link_to "編集", edit_community_path(@community), class: "btn btn-outline-success" %><span> </span>
+            <%= link_to "削除", community_path(@community), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger" %>
           </div>
           <% end %>
         <% end %>
@@ -28,8 +28,14 @@
             </th>
           </tr>
           <tr>
-            <td>
+            <td class="d-flex justify-content-between">
+              <div>
               コメント件数：<%= @community.community_comments.count %>
+              </div>
+              <div>
+              いいね件数：<%= render "favorites/favorite-btn", community: @community %>
+              </div>
+              <div></div>
             </td>
           </tr>
           <% if user_signed_in? %>

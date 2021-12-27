@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :accounts, only: [:index, :create, :edit, :update, :destroy]
     resources :communities do
       resources :community_comments, only: [:create, :edit, :update, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 
