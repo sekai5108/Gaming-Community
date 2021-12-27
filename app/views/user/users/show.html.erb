@@ -68,6 +68,9 @@
           <td>
             <%= community.text %>
           </td>
+          <td class="text-right">
+            いいね数：<%= community.favorites.count %>件
+          </td>
         </tr>
         <% end %>
         </tbody>
