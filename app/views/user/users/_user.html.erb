@@ -13,18 +13,20 @@
           <tr class="row">
             <td class="col-12 text-center"><%= @user.handle %></td>
           </tr>
-          <% if @user_id == current_user.id %>
-            <tr class="row">
-              <td class="col-12 text-center bg-light">アカウントID</td>
-            </tr>
-            <% @accounts.each do |account| %>
-            <tr class="row">
-              <td class="col-12 text-center"><%= account.account_name %></td>
-            </tr>
+          <% if user_signed_in? %>
+            <% if @user_id == current_user.id %>
+              <tr class="row">
+                <td class="col-12 text-center bg-light">アカウントID</td>
+              </tr>
+              <% @accounts.each do |account| %>
+              <tr class="row">
+                <td class="col-12 text-center"><%= account.account_name %></td>
+              </tr>
+              <% end %>
+              <tr class="row">
+                <td class="col-12 text-center"><%= link_to "追加・編集", accounts_path, class: "btn btn-success" %></td>
+              </tr>
             <% end %>
-            <tr class="row">
-              <td class="col-12 text-center"><%= link_to "追加・編集", accounts_path, class: "btn btn-success" %></td>
-            </tr>
           <% end %>
         </tbody>
       </table>

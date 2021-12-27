@@ -32,6 +32,7 @@
               コメント件数：<%= @community.community_comments.count %>
             </td>
           </tr>
+          <% if user_signed_in? %>
           <tr>
             <td>
                 <%= form_with model: [@community, @comment], local: true do |f| %>
@@ -42,6 +43,20 @@
                 </div>
             </td>
           </tr>
+          <% else %>
+          <tr>
+            <td>
+              <div class="text-center">
+                <h4 class="bg-light">未登録の方はこちら</h4>
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
+              </div>
+              <div class="text-center">
+                <h4 class="bg-light">登録済みの方はこちら</h4>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-success" %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
           <% @comments.each do |community_comment| %>
           <tr>
             <td>
