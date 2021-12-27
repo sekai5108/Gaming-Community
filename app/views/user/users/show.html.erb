@@ -1,36 +1,42 @@
-<div class="container">
-  <div class="row mt-3">
-    <div class ="col-3">
-      <h4 class="text-center text-light bg-secondary">マイページ</h4>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class ="col-md-4">
+      <% if user_signed_in? %>
+      <div class="container">
+        <div class="row mt-3">
+          <div class="mx-auto">
+          <h2 class="text-center text-light bg-secondary">ユーザー詳細</h2>
+          </div>
+        </div>
+        <table class="table table-borderless">
+          <tr class="row">
+            <td class="col-6 text-center pt-3"><strong>登録情報</strong></td>
+            <td class="col-6 text-center"><%= link_to '編集する', edit_user_path(@user),class: "btn btn-success btn-sm" %></td>
+          </tr>
+        </table>
+        <table class="table table-border-dark">
+          <tbody>
+            <tr class="row">
+              <td class="col-12 text-center"><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+            </tr>
+            <tr class="row">
+              <td class="col-6 text-center">ニックネーム</td>
+              <td class="col-6 text-center"><%= @user.handle %></td>
+            </tr>
+            <tr class="row">
+              <td class="col-6 text-center">アカウントID</td>
+              <td class="col-6 text-center"><%= link_to "追加・編集", accounts_path, class: "btn btn-success btn-sm" %></td>
+            </tr>
+            <% @accounts.each do |account| %>
+            <tr class="row">
+              <td class="col-6 text-center"><%= account.account_name %></td>
+              <td></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
     </div>
   </div>
-
-  <table class="table table-borderless">
-    <tr class="row">
-      <td class="col-2"><strong>登録情報</strong></td>
-      <td class="col-4"><%= link_to '編集する', edit_user_path(@user),class: "btn btn-success" %></td>
-    </tr>
-  </table>
-
-  <table class="table table-border-dark">
-    <tbody>
-      <tr class="row">
-        <td class="col-4"><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
-      </tr>
-      <tr class="row">
-        <td class="col-2">ニックネーム</td>
-        <td class="col-2"><%= @user.handle %></td>
-      </tr>
-      <tr class="row">
-        <td class="col-2">アカウントID</td>
-        <td class="col-2"><%= link_to "追加・編集", accounts_path, class: "btn btn-success" %></td>
-      </tr>
-      <% @accounts.each do |account| %>
-      <tr class="row">
-        <td class="col-4"><%= account.account_name %></td>
-        <td></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

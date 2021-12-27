@@ -23,14 +23,14 @@
             </th>
           </tr>
           <tr>
-            <td>
+            <th>
               <%= @community.text %>
-            </td>
+            </th>
           </tr>
           <tr>
-            <th>
-              <p>コメント件数：<%= @community.community_comments.count %></p>
-            </th>
+            <td>
+              コメント件数：<%= @community.community_comments.count %>
+            </td>
           </tr>
           <tr>
             <td>
@@ -44,8 +44,15 @@
           </tr>
           <% @comments.each do |community_comment| %>
           <tr>
-            <td><%= community_comment.user.handle %>：<%= community_comment.comment %><br>
-            <%= community_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <%= community_comment.user.handle %>：<%= community_comment.comment %><br>
+              <%= community_comment.created_at.strftime('%Y/%m/%d') %>
+              <% if user_signed_in? %>
+                <% if @comment.user_id == current_user.id %>
+                  <%= link_to "削除", community_community_comment_path(@comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger text-right" %>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
       </table>

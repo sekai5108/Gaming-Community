@@ -17,7 +17,9 @@ class User::CommunityCommentsController < ApplicationController
   end
 
   def destroy
-    @community_comment.find_by(id: params[:id]).destroy
+    @community= Community.find(params[:community_id])
+    community_comment = @community.community_comments.find(params[:id])
+    community_comment.destroy
     redirect_to community_path(params[:community_id])
   end
 
