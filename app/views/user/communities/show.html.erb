@@ -32,9 +32,15 @@
               <div>
               コメント件数：<%= @community.community_comments.count %>
               </div>
-              <div>
-              いいね件数：<%= render "favorites/favorite-btn", community: @community %>
-              </div>
+              <% if user_signed_in? %>
+                <div>
+                  いいね件数：<%= render "favorites/favorite-btn", community: @community %>
+                </div>
+              <% else %>
+                <div>
+                  いいね件数：<%= @community.favorites.count %>
+                </div>
+              <% end %>
               <div></div>
             </td>
           </tr>
