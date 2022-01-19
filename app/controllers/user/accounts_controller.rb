@@ -3,6 +3,7 @@ class User::AccountsController < ApplicationController
   def index
     @accounts = Account.all
     @account = Account.new
+    @user = current_user
   end
 
   def create

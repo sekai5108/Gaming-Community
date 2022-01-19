@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class = "text-center" style = "background-color:lightgray">アカウントID一覧・追加</h4>
+    <div class = "text-center" style = "background-color:lightgray">アカウントID一覧</h4>
   </div>
 </div>
 <div class="container">
@@ -29,13 +29,13 @@
         </div>
       </thead>
       <tbody>
-        <% @accounts.each do |account| %>
-          <tr>
-            <td><%= account.account_name %></td>
-            <td><%= link_to "編集する", edit_account_path(account), class: "btn btn-outline-success" %></td>
-            <td><%= link_to "削除", account_path(account), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
-          </tr>
-        <% end %>
+          <% @accounts.each do |account| %>
+            <tr>
+              <td><%= account.account_name %></td>
+              <td><%= link_to "編集する", edit_account_path(account), class: "btn btn-outline-success" %></td>
+              <td><%= link_to "削除", account_path(account), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
       </tbody>
     </table>
     <div><%= link_to "戻る", user_path(current_user), class: "btn btn-outline-success" %></div>
